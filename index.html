@@ -20,7 +20,7 @@
     <div class="container">
       <h1 class="visually-hidden">Gallery</h1>
       <h2 class="featured__title title">Featured images</h2>
-      <ul class="featured__list">
+      <ul class="featured__list featured__list--hidden">
         <li class="featured__item">
           <div class="img-wrapper">
             <img
@@ -93,6 +93,66 @@
         </li>
       </ul>
 
+      <!-- markup galery 960px -->
+      <div class="gallery__wrapper">
+        <div class="main-img__wrapper">
+          <img
+            src="./images/images/f-1.jpg"
+            alt="nice space"
+            class="main-img"
+            loading="lazy"
+          />
+          <div class="main-img__info">
+            <p class="main-img__name">Hubble Spies Calactic Traffic Jam</p>
+            <p class="main-img__tags">#hubble #galaxy #galacticjam</p>
+          </div>
+        </div>
+
+        <ul class="gallery__list">
+          <li class="gallery__item">
+            <div class="img-wrapper">
+              <img
+                src="./images/images/f-1.jpg"
+                alt="nice space"
+                class="featured__img"
+                loading="lazy"
+              />
+            </div>
+            <div class="img__info">
+              <p class="img__name">Hubble Spies Calactic Traffic Jam</p>
+              <p class="img__tags">#hubble #galaxy #galacticjam</p>
+            </div>
+          </li>
+          <li class="gallery__item">
+            <div class="img-wrapper">
+              <img
+                src="./images/images/f-2.jpg"
+                alt="nice space"
+                class="featured__img"
+                loading="lazy"
+              />
+            </div>
+            <div class="img__info">
+              <p class="img__name">Planet in the Habitable Zone</p>
+              <p class="img__tags">#tess #planet</p>
+            </div>
+          </li>
+        </ul>
+
+        <button class="btn btn-back" type="button">
+          <svg width="32" height="32">
+            <use href="./images/icons/sprite.svg#back"></use>
+          </svg>
+        </button>
+        <button class="btn btn-next" type="button">
+          <svg width="32" height="32">
+            <use href="./images/icons/sprite.svg#next"></use>
+          </svg>
+        </button>
+      </div>
+
+      <!-- markup galery 960px END -->
+
       <h2 class="last-images__title title">Last images</h2>
       <ul class="last-images__list">
         <li class="last-images__item">
@@ -104,9 +164,9 @@
               loading="lazy"
             />
           </div>
-          <div class="img__info">
-            <p class="img__name">Hubble Spies Calactic Traffic Jam</p>
-            <p class="img__tags">#hubble #galaxy #galacticjam</p>
+          <div class="last-images__info">
+            <p class="last-images__name">Hubble Spies Calactic Traffic Jam</p>
+            <p class="last-images__tags">#hubble #galaxy #galacticjam</p>
           </div>
         </li>
         <li class="last-images__item">
@@ -118,9 +178,9 @@
               loading="lazy"
             />
           </div>
-          <div class="img__info">
-            <p class="img__name">Hubble Spies Calactic Traffic Jam</p>
-            <p class="img__tags">#hubble #galaxy #galacticjam</p>
+          <div class="last-images__info">
+            <p class="last-images__name">Hubble Spies Calactic Traffic Jam</p>
+            <p class="last-images__tags">#hubble #galaxy #galacticjam</p>
           </div>
         </li>
       </ul>

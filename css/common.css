@@ -3,27 +3,6 @@
   --primary-text-color: #424242;
   --white-text-color: #ffffff;
   --tags-text-color-alpha: rgba(255, 255, 255, 0.66);
-  /* --title-text-color: #212121;
-  --accent-color: #2196f3;
-  
-  --social-primary-color: #afb1b8;
-  --footer-mail-color: rgba(255, 255, 255, 0.6);
-  --modal-border-color: rgba(33, 33, 33, 0.2);
-  /* CSS-змінні фонові кольори */
-  --secondary-bg-color: #f5f4fa;
-  --footer-bg-color: #2f303a;
-  --accent-bg-color: #2196f3;
-  --white-bg-color: #ffffff;
-  --social-bg-color: rgba(255, 255, 255, 0.1);
-  /* FLEX-змінні */
-  --project-list-gap: 30px;
-  --section-padding-gap: 94px;
-  /* Тіні карток та кнопок */
-  --shadow-portfolio: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  --shadow-studio: 0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  /* OTHER */
-  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1); */
 }
 * {
   box-sizing: border-box;
@@ -56,16 +35,17 @@ h6 {
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
 
   object-fit: cover;
+  object-position: center;
 }
 
 body {
   margin: 16px;
-  font-family: -apple-system, Roboto, BlinkMacSystemFont,  Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", "Segoe UI", sans-serif;
+  font-family: -apple-system, Roboto, BlinkMacSystemFont, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
@@ -80,45 +60,6 @@ body {
 
   outline: 1px solid red;
 }
-
-/
-
-input {
-  padding: 8px;
-  font: inherit;
-}
-
-button {
-  padding: 8px 12px;
-  cursor: pointer;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  border: none;
-}
-
-/* Gallery task 3 */
-
-/* .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-
-  list-style: none;
-}
-
-.gallery__item {
-  height: 350px;
-  width: 450px;
-}
-
-.gallery__item > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-} */
 
 .visually-hidden {
   position: absolute;
@@ -135,66 +76,73 @@ button {
 }
 
 .title {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 
   font-size: 24px;
   line-height: calc(24 / 18);
   text-transform: uppercase;
   text-align: center;
-	color: var(--primary-text-color);
+  color: var(--primary-text-color);
 }
 .featured__list {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 .featured__item {
-	position: relative;
+  position: relative;
 }
 @media screen and (max-width: 679px) {
   .featured__item:not(:last-child) {
-	margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+  }
 }
 
-.img-wrapper {
-	width: 250px;
-	height: 250px;
-
+.img-wrapper,
+.last-images__wrapper {
+  width: 250px;
+  height: 250px;
 }
 .featured__img {
 }
-.img__info {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+.img__info,
+.main-img__info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
-	padding-top: 30px;
-	padding-bottom: 15px;
-	padding-left: 15px;
-	padding-right: 15px;
-	width: 100%;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
 
-	 background-image: linear-gradient(to bottom, rgba(26, 26, 28, 0), rgba(22, 22, 23, 0.73));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(26, 26, 28, 0),
+    rgba(22, 22, 23, 0.73)
+  );
 }
-.img__name {
-	margin-bottom: 8px;
-	font-size: 14px;
+.img__name,
+.main-img__name {
+  margin-bottom: 8px;
+  font-size: 14px;
   line-height: calc(18 / 14);
-	color: var(--white-text-color);
+  color: var(--white-text-color);
 }
-.img__tags {
-	font-size: 12px;
+.img__tags,
+.main-img__tags {
+  font-size: 12px;
   line-height: calc(14 / 12);
-	color: var(--tags-text-color-alpha);
+  color: var(--tags-text-color-alpha);
 }
 .last-images__title {
 }
 .last-images__list {
 }
 .last-images__item {
-	position: relative;
+  position: relative;
 }
 .last-images__item:not(:last-child) {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .last-images__wrapper {
 }
@@ -203,38 +151,48 @@ button {
 
 .banner__wrapper {
 }
+.gallery__wrapper {
+  display: none;
+}
 
-* Adaptive */
-@media screen and (min-width: 280px) {
+.main-img__wrapper {
+  position: relative;
+
+  width: 540px;
+  height: 540px;
+}
+
+* Adaptive */ @media screen and (min-width: 280px) {
   .container {
     width: 280px;
   }
-  .img-wrapper {
-	width: 250px;
-	height: 250px;
-}
 }
 @media screen and (min-width: 680px) {
   .container {
     width: 680px;
   }
-  .featured__list {
-	display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-.img-wrapper {
-	width: 310px;
-	height: 310px;
-}
-.featured__item {
-	width: 310px;
-}
-.featured__item:first-child {
-	width: 650px;
-	height: 650px;
-}
+  .featured__list,
+  .last-images__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
+  .img-wrapper,
+  .last-images__wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  .featured__item,
+  .last-images__item {
+    width: 310px;
+    height: 310px;
+  }
+
+  .featured__item:first-child {
+    width: 650px;
+    height: 650px;
+  }
 }
 @media screen and (min-width: 960px) {
   .container {
@@ -242,9 +200,44 @@ button {
   }
 
   .featured__title {
-	margin-bottom: 24px;
-  font-size: 32px;
-  line-height: calc(32 / 24);
-  text-align: left;
+    margin-bottom: 24px;
+    /* padding-left: 55px; */
+    font-size: 32px;
+    line-height: calc(32 / 24);
+    text-align: left;
+  }
+
+  .featured__list--hidden {
+    display: none;
+  }
+  .gallery__wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .gallery__item {
+    position: relative;
+    width: 255px;
+    height: 255px;
+  }
+  .gallery__item:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
+
+.btn-back {
+  position: absolute;
+  top: 330px;
+  left: 0;
+}
+
+.btn-next {
+  position: absolute;
+  top: 330px;
+  right: 0;
 }
