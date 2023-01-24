@@ -1,8 +1,10 @@
 :root {
   /* Головна палітра кольорів */
   --primary-text-color: #424242;
+  --secondary-text-color: #212121;
   --white-text-color: #ffffff;
   --tags-text-color-alpha: rgba(255, 255, 255, 0.66);
+  --tags-text-color-dark-alpha: rgba(66, 66, 66, 0.66);
 }
 * {
   box-sizing: border-box;
@@ -55,11 +57,14 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 15px 15px;
   width: 280px;
 
   outline: 1px solid red;
 }
+/* .container--inner {
+  display: none;
+} */
 
 .visually-hidden {
   position: absolute;
@@ -94,6 +99,10 @@ body {
   .featured__item:not(:last-child) {
     margin-bottom: 20px;
   }
+}
+
+.last-images__item:last-child {
+  display: none;
 }
 
 .img-wrapper,
@@ -138,15 +147,25 @@ body {
 }
 .last-images__list {
 }
-.last-images__item {
-  position: relative;
-}
-.last-images__item:not(:last-child) {
-  margin-bottom: 20px;
-}
+
 .last-images__wrapper {
 }
 .last-images__img {
+}
+
+.last-images__info {
+  padding-top: 20px;
+}
+.last-images__name {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  color: var(--secondary-text-color);
+}
+.last-images__tags {
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  color: var(--tags-text-color-dark-alpha);
 }
 
 .banner__wrapper {
@@ -171,11 +190,15 @@ body {
   .container {
     width: 680px;
   }
-  .featured__list,
-  .last-images__list {
+  .featured__list {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+  }
+  .last-images__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .img-wrapper,
@@ -196,12 +219,20 @@ body {
 }
 @media screen and (min-width: 960px) {
   .container {
+    position: relative;
     width: 960px;
   }
+  .container--inner {
+    /* background-color: rgb(136, 39, 39); */
+    display: block;
+    padding-left: 60px;
+    padding-right: 60px;
 
-  .featured__title {
+    outline: 1px solid green;
+  }
+
+  .title {
     margin-bottom: 24px;
-    /* padding-left: 55px; */
     font-size: 32px;
     line-height: calc(32 / 24);
     text-align: left;
@@ -230,14 +261,27 @@ body {
   .gallery__item:not(:last-child) {
     margin-bottom: 30px;
   }
+
+  .last-images__item {
+    width: 248px;
+    height: 248px;
+  }
+  .last-images__item:last-child {
+    display: block;
+    height: 496px;
+  }
 }
+
 .btn {
+  display: none;
+
   cursor: pointer;
   height: 80px;
   border: none;
   background-color: transparent;
   transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
 }
+
 .btn:hover,
 .btn:focus {
   background-color: rgb(189, 188, 188);
@@ -245,12 +289,17 @@ body {
 }
 .btn-back {
   position: absolute;
-  top: 230px;
+  top: 300px;
   left: 0;
 }
 
 .btn-next {
   position: absolute;
-  top: 230px;
+  top: 300px;
   right: 0;
+}
+@media screen and (min-width: 960px) {
+  .btn {
+    display: block;
+  }
 }
