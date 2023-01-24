@@ -5,6 +5,9 @@
   --white-text-color: #ffffff;
   --tags-text-color-alpha: rgba(255, 255, 255, 0.66);
   --tags-text-color-dark-alpha: rgba(66, 66, 66, 0.66);
+  --btn-active-color: #616161;
+  --btn-disactive-color: #bdbdbd;
+  --btn-bg-color: rgba(0, 0, 0, 0.13);
 }
 * {
   box-sizing: border-box;
@@ -330,12 +333,23 @@ body {
   background-color: transparent;
   transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
 }
+.btn__icon {
+  display: inline-block;
+  stroke: var(--btn-disactive-color);
+  fill: var(--btn-disactive-color);
+}
 
 .btn:hover,
 .btn:focus {
-  background-color: rgb(189, 188, 188);
+  background-color: var(--btn-bg-color);
   transform: scale(1.1);
 }
+.btn:hover .btn__icon,
+.btn:focus .btn__icon {
+  stroke: var(--btn-active-color);
+  fill: var(--btn-active-color);
+}
+
 .btn-back {
   position: absolute;
   top: 315px;
