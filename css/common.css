@@ -119,6 +119,11 @@ body {
 .last-images__wrapper {
   width: 250px;
   height: 250px;
+
+  background-image: url(../images/images/no-image-available.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .img__info,
