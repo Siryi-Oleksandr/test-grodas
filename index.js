@@ -1,14 +1,12 @@
-// import { q } from './js/markup';
-// console.log(q);
-
+// selected elements
 const refs = {
   lastImagesList: document.querySelector('.js-last-images'),
   featuredList: document.querySelector('.js-featured-list'),
 };
 
-// window.addEventListener('resize', onFetch);
-onFeaturedFetch();
-onLastImagesFetch();
+window.addEventListener('resize', onFeaturedFetch); // add listener on Window and listening change user viewport
+onFeaturedFetch(); // request to "backEnd" for rendering Featured images list
+onLastImagesFetch(); // request to "backEnd" for rendering Last images list
 
 function onLastImagesFetch() {
   fetch('./images/__in/data.json')
@@ -34,22 +32,25 @@ function onFeaturedFetch() {
     .catch(handleError);
 }
 
+// handle results of the backEnd response
 function handleFeaturedData(data) {
   const currentViewport = window.innerWidth;
-  //   if (currentViewport < 960) {
-  //     console.log(currentViewport);
-  //   } else {
-  //     console.log('Big screen');
-  //   }
-  console.log(data);
-  const markupFeaturedImages = createMarkupFeaturedListSm(data);
-
-  refs.featuredList.innerHTML = markupFeaturedImages;
+  if (currentViewport < 960) {
+    const markupFeaturedImages = createMarkupFeaturedListSmallDevice(data);
+    refs.featuredList.innerHTML = markupFeaturedImages;
+  } else {
+    const markupFeaturedImages = createMarkupFeaturedListLargeDevice(data);
+    refs.featuredList.innerHTML = markupFeaturedImages;
+  }
 }
-
+// handle results of the backEnd response
 function handleLastImagesData(data) {
   const markupLastImages = createMarkupLastImages(data);
   refs.lastImagesList.innerHTML = markupLastImages;
+}
+
+function handleError(error) {
+  console.log(error.message);
 }
 
 function handleTags(tags) {
@@ -64,17 +65,42 @@ function sortDate(data) {
   data.sort((firstElem, secondElem) => firstElem.age - secondElem.age);
 }
 
-function handleError(error) {
-  console.log(error.message);
+function createMarkupFeaturedListSmallDevice(data) {
+  sortRating(data);
+  const mobileImagesArray = data.slice(0, 5);
+
+  return mobileImagesArray
+    .map(imageElem => {
+      const { image, tags, title, url } = imageElem;
+      const tagsToShow = handleTags(tags);
+
+      return `<li class="featured__item">
+              <a href="${url}" class="featured__link">
+                <div class="img-wrapper">
+                  <img
+                    src="./images/__in/${image}"
+                    alt="${title}"
+                    class="featured__img"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="img__info">
+                  <p class="img__name">${title}</p>
+                  <p class="img__tags">${tagsToShow}</p>
+                </div>
+              </a>
+            </li>`;
+    })
+    .join('');
 }
 
-function createMarkupFeaturedListSm(data) {
+function createMarkupFeaturedListLargeDevice(data) {
   sortRating(data);
   const mobileImagesArray = data.slice(0, 3);
 
   return mobileImagesArray
     .map(imageElem => {
-      const { id, age, image, rating, tags, title, url } = imageElem;
+      const { image, tags, title, url } = imageElem;
       const tagsToShow = handleTags(tags);
 
       return `<li class="featured__item">
@@ -103,7 +129,7 @@ function createMarkupLastImages(data) {
 
   return resentImages
     .map(imageElem => {
-      const { id, age, image, rating, tags, title, url } = imageElem;
+      const { image, tags, title, url } = imageElem;
       const tagsToShow = handleTags(tags);
 
       return `<li class="last-images__item">
@@ -127,32 +153,3 @@ function createMarkupLastImages(data) {
     })
     .join('');
 }
-
-// function createMarkupFeaturedListSm(data) {
-//   sortRating(data);
-//   const mobileImagesArray = data.slice(0, 5);
-
-//   return mobileImagesArray
-//     .map(imageElem => {
-//       const { id, age, image, rating, tags, title, url } = imageElem;
-//       const tagsToShow = handleTags(tags);
-
-//       return `<li class="featured__item">
-//               <a href="${url}" class="featured__link">
-//                 <div class="img-wrapper">
-//                   <img
-//                     src="./images/__in/${image}"
-//                     alt="${title}"
-//                     class="featured__img"
-//                     loading="lazy"
-//                   />
-//                 </div>
-//                 <div class="img__info">
-//                   <p class="img__name">${title}</p>
-//                   <p class="img__tags">${tagsToShow}</p>
-//                 </div>
-//               </a>
-//             </li>`;
-//     })
-//     .join('');
-// }
