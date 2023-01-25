@@ -71,25 +71,35 @@ function createMarkupFeaturedListSmallDevice(data) {
 
   return mobileImagesArray
     .map(imageElem => {
-      const { image, tags, title, url } = imageElem;
+      const { image, tags, title, id } = imageElem;
       const tagsToShow = handleTags(tags);
 
       return `<li class="featured__item">
-              <a class="featured__link">
-                <div class="img-wrapper">
-                  <img
-                    src="./images/__in/${image}"
-                    alt="${title}"
-                    class="featured__img"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="img__info">
-                  <p class="img__name">${title}</p>
-                  <p class="img__tags">${tagsToShow}</p>
-                </div>
-              </a>
-            </li>`;
+            <input
+              type="checkbox"
+              class="img-check visually-hidden"
+              id="${id}"
+            />
+            <span class="icon-check">
+              <svg width="18" height="18">
+                <use href="./images/icons/sprite.svg#star-solid"></use>
+              </svg>
+            </span>
+            <label for="${id}">
+              <div class="img-wrapper">
+                <img
+                  src="./images/__in/${image}"
+                  alt="${title}"
+                  class="featured__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="img__info">
+                <p class="img__name">${title}</p>
+                <p class="img__tags">${tagsToShow}</p>
+              </div>
+            </label>
+          </li>`;
     })
     .join('');
 }
@@ -100,11 +110,21 @@ function createMarkupFeaturedListLargeDevice(data) {
 
   return mobileImagesArray
     .map(imageElem => {
-      const { image, tags, title, url } = imageElem;
+      const { image, tags, title, id } = imageElem;
       const tagsToShow = handleTags(tags);
 
       return `<li class="featured__item">
-              <a class="featured__link">
+      <input
+              type="checkbox"
+              class="img-check visually-hidden"
+              id="${id}"
+            />
+            <span class="icon-check">
+              <svg width="18" height="18">
+                <use href="./images/icons/sprite.svg#star-solid"></use>
+              </svg>
+            </span>
+              <label for="${id}">
                 <div class="img-wrapper">
                   <img
                     src="./images/__in/${image}"
@@ -117,7 +137,7 @@ function createMarkupFeaturedListLargeDevice(data) {
                   <p class="img__name">${title}</p>
                   <p class="img__tags">${tagsToShow}</p>
                 </div>
-              </a>
+              </label>
             </li>`;
     })
     .join('');
@@ -129,11 +149,21 @@ function createMarkupLastImages(data) {
 
   return resentImages
     .map(imageElem => {
-      const { image, tags, title, url } = imageElem;
+      const { image, tags, title, id } = imageElem;
       const tagsToShow = handleTags(tags);
 
       return `<li class="last-images__item">
-              <a class="last-images__link">
+      <input
+              type="checkbox"
+              class="img-check visually-hidden"
+              id="${id}"
+            />
+            <span class="icon-check">
+              <svg width="18" height="18">
+                <use href="./images/icons/sprite.svg#star-solid"></use>
+              </svg>
+            </span>
+              <label for="${id}">
                 <div class="last-images__wrapper">
                 <img
                   src="./images/__in/${image}"
@@ -148,7 +178,7 @@ function createMarkupLastImages(data) {
                 </p>
                 <p class="last-images__tags">${tagsToShow}</p>
               </div>
-              </a>
+              </label>
             </li>`;
     })
     .join('');

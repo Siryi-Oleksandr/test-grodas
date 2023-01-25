@@ -349,3 +349,22 @@ body {
     display: block;
   }
 }
+
+.icon-check {
+  position: relative;
+  top: 30px;
+  left: 20px;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.img-check:checked + .icon-check {
+  visibility: visible;
+  opacity: 1;
+}
+
+label {
+  cursor: pointer;
+  /* line-height: 1px; */
+}
