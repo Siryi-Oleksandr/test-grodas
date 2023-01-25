@@ -75,7 +75,7 @@ function createMarkupFeaturedListSmallDevice(data) {
       const tagsToShow = handleTags(tags);
 
       return `<li class="featured__item">
-              <a href="${url}" class="featured__link">
+              <a class="featured__link">
                 <div class="img-wrapper">
                   <img
                     src="./images/__in/${image}"
@@ -104,7 +104,7 @@ function createMarkupFeaturedListLargeDevice(data) {
       const tagsToShow = handleTags(tags);
 
       return `<li class="featured__item">
-              <a href="${url}" class="featured__link">
+              <a class="featured__link">
                 <div class="img-wrapper">
                   <img
                     src="./images/__in/${image}"
@@ -133,7 +133,7 @@ function createMarkupLastImages(data) {
       const tagsToShow = handleTags(tags);
 
       return `<li class="last-images__item">
-              <a href="${url}" class="last-images__link">
+              <a class="last-images__link">
                 <div class="last-images__wrapper">
                 <img
                   src="./images/__in/${image}"
