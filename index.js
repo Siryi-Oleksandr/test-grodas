@@ -2,14 +2,15 @@
 // console.log(q);
 
 const refs = {
-  featuredContainer: document.querySelector('.js-featured-container'),
+  lastImagesList: document.querySelector('.js-last-images'),
   featuredList: document.querySelector('.js-featured-list'),
 };
 
 // window.addEventListener('resize', onFetch);
-onFetch();
+onFeaturedFetch();
+onLastImagesFetch();
 
-function onFetch() {
+function onLastImagesFetch() {
   fetch('./images/__in/data.json')
     .then(response => {
       if (!response.ok) {
@@ -17,11 +18,23 @@ function onFetch() {
       }
       return response.json();
     })
-    .then(handleData)
+    .then(handleLastImagesData)
     .catch(handleError);
 }
 
-function handleData(data) {
+function onFeaturedFetch() {
+  fetch('./images/__in/data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .then(handleFeaturedData)
+    .catch(handleError);
+}
+
+function handleFeaturedData(data) {
   const currentViewport = window.innerWidth;
   //   if (currentViewport < 960) {
   //     console.log(currentViewport);
@@ -34,12 +47,21 @@ function handleData(data) {
   refs.featuredList.innerHTML = markupFeaturedImages;
 }
 
+function handleLastImagesData(data) {
+  const markupLastImages = createMarkupLastImages(data);
+  refs.lastImagesList.innerHTML = markupLastImages;
+}
+
 function handleTags(tags) {
   return tags.map(tag => `#${tag}`).join(', ');
 }
 
-function sortData(data) {
+function sortRating(data) {
   data.sort((firstElem, secondElem) => secondElem.rating - firstElem.rating);
+}
+
+function sortDate(data) {
+  data.sort((firstElem, secondElem) => firstElem.age - secondElem.age);
 }
 
 function handleError(error) {
@@ -47,8 +69,8 @@ function handleError(error) {
 }
 
 function createMarkupFeaturedListSm(data) {
-  sortData(data);
-  const mobileImagesArray = data.slice(0, 5);
+  sortRating(data);
+  const mobileImagesArray = data.slice(0, 3);
 
   return mobileImagesArray
     .map(imageElem => {
@@ -75,8 +97,39 @@ function createMarkupFeaturedListSm(data) {
     .join('');
 }
 
+function createMarkupLastImages(data) {
+  sortDate(data);
+  const resentImages = data.slice(0, 2);
+
+  return resentImages
+    .map(imageElem => {
+      const { id, age, image, rating, tags, title, url } = imageElem;
+      const tagsToShow = handleTags(tags);
+
+      return `<li class="last-images__item">
+              <a href="${url}" class="last-images__link">
+                <div class="last-images__wrapper">
+                <img
+                  src="./images/__in/${image}"
+                  alt="${title}"
+                  class="last-images__img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="last-images__info">
+                <p class="last-images__name">
+                  ${title}
+                </p>
+                <p class="last-images__tags">${tagsToShow}</p>
+              </div>
+              </a>
+            </li>`;
+    })
+    .join('');
+}
+
 // function createMarkupFeaturedListSm(data) {
-//   sortData(data);
+//   sortRating(data);
 //   const mobileImagesArray = data.slice(0, 5);
 
 //   return mobileImagesArray
