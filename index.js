@@ -106,9 +106,9 @@ function createMarkupFeaturedListSmallDevice(data) {
 
 function createMarkupFeaturedListLargeDevice(data) {
   sortRating(data);
-  const mobileImagesArray = data.slice(0, 3);
+  const desctopImagesArray = data.slice(0, 3);
 
-  return mobileImagesArray
+  return desctopImagesArray
     .map(imageElem => {
       const { image, tags, title, id } = imageElem;
       const tagsToShow = handleTags(tags);
