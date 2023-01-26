@@ -88,7 +88,7 @@ function createMarkupFeaturedListSmallDevice(data) {
             <label for="${id}">
               <div class="img-wrapper">
                 <img
-                  src="./images/__in/${image}"
+                  src="images/__in/${image}"
                   alt="${title}"
                   class="featured__img"
                   loading="lazy"
@@ -127,7 +127,7 @@ function createMarkupFeaturedListLargeDevice(data) {
               <label for="${id}">
                 <div class="img-wrapper">
                   <img
-                    src="./images/__in/${image}"
+                    src="images/__in/${image}"
                     alt="${title}"
                     class="featured__img"
                     loading="lazy"
@@ -166,7 +166,7 @@ function createMarkupLastImages(data) {
               <label for="${id}">
                 <div class="last-images__wrapper">
                 <img
-                  src="./images/__in/${image}"
+                  src="images/__in/${image}"
                   alt="${title}"
                   class="last-images__img"
                   loading="lazy"
