@@ -52,7 +52,9 @@ function handleLastImagesData(data) {
 }
 
 function handleError(error) {
-  console.log(error.message);
+  console.log('😥');
+
+  console.error(error.message);
 }
 
 function handleTags(tags) {
