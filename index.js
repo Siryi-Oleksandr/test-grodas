@@ -21,7 +21,7 @@ function onLastImagesFetch() {
 }
 
 function onFeaturedFetch() {
-  fetch('images/__in/data.json')
+  fetch('./images/__in/data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
