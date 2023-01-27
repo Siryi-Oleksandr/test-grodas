@@ -34,8 +34,6 @@ function onFeaturedFetch() {
 
 // handle results of the backEnd response
 function handleFeaturedData(data) {
-  console.log('data', data);
-
   const currentViewport = window.innerWidth;
   if (currentViewport < 960) {
     const markupFeaturedImages = createMarkupFeaturedListSmallDevice(data);
@@ -52,8 +50,6 @@ function handleLastImagesData(data) {
 }
 
 function handleError(error) {
-  console.log('😥');
-
   console.error(error.message);
 }
 
